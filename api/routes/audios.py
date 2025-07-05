@@ -12,7 +12,6 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class AudioUploadResponse(BaseModel):
     id: str
-    filename: str
 
 
 @router.post("/", response_model=AudioUploadResponse)
@@ -31,4 +30,4 @@ async def upload_audio(file: UploadFile = File(...)):
     with open(path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return AudioUploadResponse(id=file_id, filename=filename)
+    return AudioUploadResponse(id=file_id)
