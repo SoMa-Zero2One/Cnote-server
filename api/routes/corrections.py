@@ -8,7 +8,7 @@ from services.correction import correct_text
 router = APIRouter()
 
 
-@router.post("/corrections", response_model=CorrectionResponse)
+@router.post("/", response_model=CorrectionResponse)
 def post_correction(payload: CorrectionRequest):
     return CorrectionResponse(
         id=str(uuid.uuid4()),
